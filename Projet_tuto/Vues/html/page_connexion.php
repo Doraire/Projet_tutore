@@ -33,6 +33,12 @@
 			<input type="submit" value="Se connecter">
 			<a href="page_inscription.php">Vous n'avez pas de compte ?</a>
 		</form>
+		<?php
+			$trompe = $_GET["mdp"];
+			if ($trompe == 'nega'){
+				echo "Identifiant ou mot de passe incorrecte";
+			}
+		?>
 	</div>
 </div>
 
