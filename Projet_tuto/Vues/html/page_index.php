@@ -36,7 +36,7 @@
 
 	<footer>
 		<form action="../../Controleurs/deconnexion.php" method="POST">
-			<input type="submit" value="Deconnexion">
+			<input type="submit" value="Déconnexion">
 		</form>
 	</footer>
 </body>
