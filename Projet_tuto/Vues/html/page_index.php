@@ -20,7 +20,11 @@
 		<div class="element_nav"><a href="connexion.php">Nous contacter</a></div>
 		<div class="element_nav compte"><a href="">Se connecter</a></div>
 	</nav>
-
+	<?php
+		session_start();
+		$login = $_SESSION["login"];
+		echo "Bonjour $login ! (c'est un test)";
+	?>
 	<article>
 		<p>Dernières nouveautés</p>
 	</article>
@@ -29,6 +33,12 @@
 		<p>Consulter la liste des produits</p>
 	</article>
 
+
+	<footer>
+		<form action="../../Controleurs/deconnexion.php" method="POST">
+			<input type="submit" value="Deconnexion">
+		</form>
+	</footer>
 </body>
 
 </html>
