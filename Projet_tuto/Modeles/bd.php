@@ -8,12 +8,10 @@ class Bd
 	private $co;
 
 	function __construct(){
-		echo "construit";
 		$this->bdd = "projet_tuto";
 		$this->host = "localhost";
 		$this->user = "root";
-		$this->passwd = "root";
-		echo "construit";
+		$this->passwd = "root";	
 	}
 
 	public function connexion()
