@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -15,10 +19,28 @@
 <body>
 	<nav>
 		<div class="element_nav"><img src="Images/logo_nav.png" width="75px"></div>
-		<div class="element_nav"><a href="">Accueil</a></div>
-		<div class="element_nav"><a href="">Produits</a></div>
-		<div class="element_nav"><a href="">Nous contacter</a></div>
-		<div class="element_nav compte"><a href="">Se connecter</a></div>
+		<div class="element_nav"><a href="page_index.php">Accueil</a></div>
+		<div class="element_nav"><a href="page_produits.php">Produits</a></div>
+		<div class="element_nav compte">
+			<?php
+			if(isset($_SESSION["login"]))
+			{
+				if($_SESSION["estAdmin"])
+				{
+					echo "<a href=\"page_options_producteur.php\">Options</a>";
+				}
+				else
+				{
+					echo "<a href=\"page_options_client.php\">Mon compte</a>";
+				}
+
+			}
+			else
+			{
+				echo "<a href=\"page_connexion.php\">Se connecter</a>";
+			}
+			?>
+		</div>
 	</nav>
 
 	<div class="formulaire">
