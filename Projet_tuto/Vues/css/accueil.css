@@ -3,3 +3,9 @@ article
 	margin-left: 10%;
 	margin-bottom: 10%;
 }
+
+footer
+{
+	display: flex;
+	justify-content: center;
+}
