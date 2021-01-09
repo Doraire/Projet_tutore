@@ -42,6 +42,11 @@ session_start();
 			?>
 		</div>
 	</nav>
+	<div class="bouton_panier">
+		<form  action="" method="POST">	
+			<input type="submit" value="Consulter le panier">
+		</form>
+	</div>
 	<div class="liste_produits">
 		<?php
 		require_once("../../Modeles/bd.php");
@@ -50,25 +55,30 @@ session_start();
 		$reponse = mysqli_query($co, "SELECT nomFamille, typeProduit, nomProduit, prixProduit, quantiteStock
 			FROM Produit P INNER JOIN Famille F ON (P.numFamille=F.numFamille)
 			ORDER BY P.numFamille;");
-		echo "<table>
-		<tr>
-		<th>Famille</th>
-		<th>Nom</th>
-		<th>Type</th>
-		<th>Prix</th>
-		<th>Quantité</th>
-		</tr>";
+		$compteur_ligne = 0;
 		while ($ligne = mysqli_fetch_assoc($reponse)) 
 		{
-			echo "<tr>
-			<td>".$ligne["nomFamille"]."</td>
-			<td>".$ligne["nomProduit"]."</td>
-			<td>".$ligne["typeProduit"]."</td>
-			<td>".$ligne["prixProduit"]."€</td>
-			<td>".$ligne["quantiteStock"]."</td>
-			</tr>";
+			if($compteur_ligne%3==0)
+			{
+				echo "<div class=\"ligne_produits\">\n";
+			}
+			echo "<div class=\"produit\">\n
+			<img src=\"Images/image_produits_defaut.png\" alt=\"Image produit\">\n
+			<p>".$ligne["nomFamille"]."</p>\n
+			<p>".$ligne["nomProduit"]."</p>\n
+			<p>".$ligne["prixProduit"]."€/unité</p>\n
+			<p>".$ligne["quantiteStock"]."kg</p>\n
+			<form action=\"../../Controleurs/modif_client.php\" method=\"POST\">
+			<input class=\"number\" type=\"number\" name=\"quantite\" value=\"0\" min=\"0\" max=\"50\" step=\"0.1\">
+			<input type=\"submit\" value=\"Commander\">
+			</form>
+			</div>\n";
+			$compteur_ligne=$compteur_ligne+1;
+			if($compteur_ligne%3==0)
+			{
+				echo "</div>\n";	
+			}
 		}
-		echo "</table>"
 		?>
 	</div>
 </body>
