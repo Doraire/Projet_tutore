@@ -66,7 +66,7 @@ session_start();
 			<img src=\"Images/image_produits_defaut.png\" alt=\"Image produit\">\n
 			<p>".$ligne["nomFamille"]."</p>\n
 			<p>".$ligne["nomProduit"]."</p>\n
-			<p>".$ligne["prixProduit"]."€/unité</p>\n
+			<p>".$ligne["prixProduit"]."€/kg</p>\n
 			<p>".$ligne["quantiteStock"]."kg</p>\n
 			<form action=\"../../Controleurs/modif_client.php\" method=\"POST\">
 			<input class=\"number\" type=\"number\" name=\"quantite\" value=\"0\" min=\"0\" max=\"50\" step=\"0.1\">
