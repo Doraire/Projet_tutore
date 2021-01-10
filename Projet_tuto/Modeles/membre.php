@@ -24,7 +24,7 @@ class Membre
 	public function connexion() 
 	{
 		session_start();
-		$_SESSION["numclient"]=$this->num_client;
+		$_SESSION["num_client"]=$this->num_client;
 		$_SESSION["login"] = $this->login;
 		$_SESSION["estAdmin"] = $this->estAdmin;
 	}
