@@ -75,6 +75,11 @@ session_start();
 			</p>
 			<input type="submit" value="S'inscrire">
 			<a href="page_connexion.php">Vous avez déjà un compte ?</a>
+			<?php
+				if($_GET["login"]=='nega'){
+					echo "Votre login est déjà pris";
+				}
+			?>
 		</form>
 	</div>
 
