@@ -52,7 +52,7 @@ session_start();
 		require_once("../../Modeles/bd.php");
 		$bd = new Bd();
 		$co = $bd->connexion();
-		$reponse = mysqli_query($co, "SELECT nomFamille, typeProduit, nomProduit, prixProduit, quantiteStock
+		$reponse = mysqli_query($co, "SELECT nomFamille, typeProduit, nomProduit, prixProduit, quantiteStock, nomImage
 			FROM Produit P INNER JOIN Famille F ON (P.numFamille=F.numFamille)
 			ORDER BY P.numFamille;");
 		$compteur_ligne = 0;
@@ -62,10 +62,20 @@ session_start();
 			{
 				echo "<div class=\"ligne_produits\">\n";
 			}
-			echo "<div class=\"produit\">\n
-			<img src=\"Images/image_produits_defaut.png\" alt=\"Image produit\">\n
-			<p>".$ligne["nomFamille"]."</p>\n
+			echo "<div class=\"produit\">\n";
+			if($ligne["nomImage"])
+			{
+				echo "<img src=\"Images/".$ligne["nomImage"]."\" alt=\"Image produit\">\n";
+			}
+			else
+			{
+				echo "<img src=\"Images/image_produits_defaut.png\" alt=\"Image produit\">\n";
+			}
+			
+
+			echo "<p>".$ligne["nomFamille"]."</p>\n
 			<p>".$ligne["nomProduit"]."</p>\n
+			<p>".$ligne["typeProduit"]."</p>\n
 			<p>".$ligne["prixProduit"]."€/kg</p>\n
 			<p>".$ligne["quantiteStock"]."kg</p>\n
 			<form action=\"../../Controleurs/modif_client.php\" method=\"POST\">
