@@ -6,3 +6,10 @@
 -deconnexion.php
 -modif_client.php
 -page_produits.php
+
+
+
+Création de commande fait : 
+-ajout_commande.php
+-page_récapitulatif.php
+-ajout_au_panier.php
