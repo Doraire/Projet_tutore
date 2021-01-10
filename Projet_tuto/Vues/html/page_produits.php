@@ -43,7 +43,7 @@ session_start();
 		</div>
 	</nav>
 	<div class="bouton_panier">
-		<form  action="" method="POST">	
+		<form  action="page_recapitulatif.php" method="POST">	
 			<input type="submit" value="Consulter le panier">
 		</form>
 	</div>
@@ -85,7 +85,7 @@ session_start();
 			<p>".$ligne["typeProduit"]."</p>\n
 			<p>".$ligne["prixProduit"]."€/kg</p>\n
 			<p>".$ligne["quantiteStock"]."kg</p>\n
-			<form action=\"../../Controleurs/modif_client.php\" method=\"POST\">
+			<form action=\"../../Controleurs/ajout_au_panier.php\" method=\"POST\">
 			<input class=\"number\" type=\"number\" name=".$ligne["nomProduit"]." value=".$valeur." min=\"0\" max=\"50\" step=\"0.1\">
 			<input type=\"submit\" value=\"Commander\">
 			</form>
