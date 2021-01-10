@@ -49,6 +49,7 @@ session_start();
 	</div>
 	<div class="liste_produits">
 		<?php
+		$valeur = 0;
 		require_once("../../Modeles/bd.php");
 		$bd = new Bd();
 		$co = $bd->connexion();
@@ -58,6 +59,12 @@ session_start();
 		$compteur_ligne = 0;
 		while ($ligne = mysqli_fetch_assoc($reponse)) 
 		{
+			for ($i=0 ;$i < count($_SESSION['panier']['nomProduit']) ; $i++){
+				if($ligne["nomProduit"]==$_SESSION['panier']['nomProduit'][$i]){
+					$valeur = $_SESSION['panier']['qteProduit'][$i];
+				}
+			}
+			
 			if($compteur_ligne%3==0)
 			{
 				echo "<div class=\"ligne_produits\">\n";
@@ -79,7 +86,7 @@ session_start();
 			<p>".$ligne["prixProduit"]."€/kg</p>\n
 			<p>".$ligne["quantiteStock"]."kg</p>\n
 			<form action=\"../../Controleurs/modif_client.php\" method=\"POST\">
-			<input class=\"number\" type=\"number\" name=\"quantite\" value=\"0\" min=\"0\" max=\"50\" step=\"0.1\">
+			<input class=\"number\" type=\"number\" name=".$ligne["nomProduit"]." value=".$valeur." min=\"0\" max=\"50\" step=\"0.1\">
 			<input type=\"submit\" value=\"Commander\">
 			</form>
 			</div>\n";
@@ -88,6 +95,7 @@ session_start();
 			{
 				echo "</div>\n";	
 			}
+			$valeur = 0;
 		}
 		?>
 	</div>
