@@ -48,3 +48,17 @@ th, td
 {
 	text-align: center;
 }
+
+.rupture img
+{
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);	
+}
+
+.rupture
+{
+	color:grey;
+}
