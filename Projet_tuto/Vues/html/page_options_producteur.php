@@ -45,8 +45,8 @@ session_start();
 	
 	<ul>
 		<li><a href="">Gérer les stocks</li>
-		<li><a href="page_commande.php">Consulter les commandes à venir</a></li>
-		<li><a href="page_commande.php">Consulter la totalité des commandes</a></li>
+		<li><a href="page_commande.php?optadm=1">Consulter les commandes à venir</a></li>
+		<li><a href="page_commande.php?optadm=2 ">Consulter la totalité des commandes</a></li>
 		<li><a href="page_livraison.php">Consulter la liste des livraisons à venir</a></li>
 		<li><a href="page_livraison.php">Consulter la totalité des livraisons</a></li>
 		<li><a href="../../Controleurs/deconnexion.php">Se déconnecter</li>
