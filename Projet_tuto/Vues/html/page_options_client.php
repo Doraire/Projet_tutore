@@ -45,8 +45,9 @@ session_start();
 
 	<ul>
 		<li><a href="page_produits.php">Consulter la liste des produits</li>
-		<li><a href="page_livraison.php">Consulter ses commandes et livraisons</a></li>
-		<li><a href="page_livraison.php">Modifier ses informations clients</a></li>
+		<li><a href="page_commande.php">Consulter ses commandes </a></li>
+		<li><a href="page_livraison.php">Consulter ses livraisons</a></li>
+		<li><a href="page_modif_client.php">Modifier ses informations clients</a></li>
 		<li><a href="../../Controleurs/deconnexion.php">Se déconnecter</li>
 	</ul>
 </body>
