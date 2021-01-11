@@ -18,9 +18,9 @@ session_start();
 
 <body>
 	<nav>
-		<div class="element_nav"><img src="Images/logo_nav.png" width="75px"></div>
-		<div class="element_nav"><a href="page_index.php">Accueil</a></div>
+		<div class="element_nav"><img src="Images/logo_nav.png" width="75px"></div>		
 		<div class="element_nav"><a href="page_produits.php">Produits</a></div>
+		<div class="element_nav"><a href="page_faire_commande.php">Faire une commande</a></div>
 		<div class="element_nav compte">
 			<?php
 			if(isset($_SESSION["login"]))
@@ -42,17 +42,56 @@ session_start();
 			?>
 		</div>
 	</nav>
-	<div class="bouton_panier">
-		<form  action="page_recapitulatif.php" method="POST">	
-			<input type="submit" value="Consulter le panier">
-		</form>
+	<div class="recapitulatif">
+		<table>
+			<tr>
+				<td colspan="3">Contenu de votre panier</td>
+			</tr>
+			<tr>
+				<td>Nom</td>
+				<td>Quantité</td>
+				<td>Prix</td>
+			</tr>
+			<?php
+			require_once("../../Modeles/bd.php");
+			$bd = new Bd();
+			$co = $bd->connexion();
+			$prix_total = 0;
+			if (isset($_SESSION['panier'])){
+				$nbArticles=count($_SESSION['panier']['nomProduit']);
+				for ($i=0 ;$i < $nbArticles ; $i++){
+					if($_SESSION['panier']['qteProduit'][$i]>0)
+					{
+						$nom_produit = $_SESSION['panier']['nomProduit'][$i];
+						$prix_produit = mysqli_query($co, "SELECT prixProduit FROM Produit WHERE nomProduit = '$nom_produit'");
+						$prix_produit = mysqli_fetch_assoc($prix_produit);
+						$prix_produit = $prix_produit["prixProduit"];
+						$prix_produit = $prix_produit*$_SESSION['panier']['qteProduit'][$i];
+						$prix_total = $prix_total + $prix_produit;
+						echo "<tr>";
+						echo "<td>".$nom_produit."</td>";
+						echo "<td>".$_SESSION['panier']['qteProduit'][$i]."kg</td>";
+						echo "<td>".$prix_produit."€</td>";
+						echo "</tr>";
+					}					
+				}
+			}
+			if($prix_total>0)
+			{
+				echo "<tr>
+				<td>Total</td>
+				<td>Ø</td>
+				<td>".$prix_total."€</td>
+				</tr>";
+			}
+			
+
+			?>
+		</table>
 	</div>
 	<div class="liste_produits">
 		<?php
 		$valeur = 0;
-		require_once("../../Modeles/bd.php");
-		$bd = new Bd();
-		$co = $bd->connexion();
 		$reponse = mysqli_query($co, "SELECT nomFamille, typeProduit, nomProduit, prixProduit, quantiteStock, nomImage
 			FROM Produit P INNER JOIN Famille F ON (P.numFamille=F.numFamille)
 			ORDER BY P.numFamille;");
@@ -98,6 +137,12 @@ session_start();
 			$valeur = 0;
 		}
 		?>
+	</div>
+
+	<div class="bouton_confirmation">
+		<form  action="../../Controleurs/ajout_commande.php" method="POST">	
+			<input type="submit" value="Confirmer la commande">
+		</form>
 	</div>
 </body>
 
