@@ -107,7 +107,8 @@ session_start();
 					else{
 						echo "<td> </td>";
 						echo "<td> <form action=\"../../Controleurs/ajout_livraison.php\" method=\"POST\">
-										<input type=\"date\" name=\"datelivraison\" min=\"2021-01-01\">	
+										<input type=\"date\" name=\"datelivraison\" min=\"2021-01-01\">
+										<input type=\"text\" value=\"$numcommande\" style=\"display:none\">
 											<input type=\"submit\" value=\"Choisir\">
 									</form></td>";
 					}
