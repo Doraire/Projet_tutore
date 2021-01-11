@@ -42,7 +42,178 @@ session_start();
 			?>
 		</div>
 	</nav>
-	
+	<table>
+		<tr>
+        	<td colspan="8">Liste des commandes</td>
+    	</tr>
+    	<tr>
+    		<td>Num Client</td>
+    		<td>Num Commande</td>
+    		<td>Date Commande</td>
+    		<td>Panier</td>
+    		<td>Contenu</td>
+    		<td>Date Livraison</td>
+	<?php
+		include("../../Modeles/bd.php");
+		$bd = new Bd();
+		$co = $bd->connexion();
+		if($_SESSION["estAdmin"])
+		{
+			$opt = $_GET['optadm'];
+			if($opt==1){
+				//Côté commande à venir
+			echo "<td colspan=\"2\">Determiner la date de livraison</td>
+    	</tr>";
+
+    			$resultat=mysqli_query($co, "SELECT numCommande,dateCommande,panierCommande,numClient FROM Commande");
+    			while($row=mysqli_fetch_assoc($resultat)){
+					$numclient= $row["numClient"];
+					$numcommande = $row["numCommande"];
+					$datecommande = $row["dateCommande"];
+					$panier = $row['panierCommande'];
+					echo "<tr>";
+					echo "<td> $numclient </td>";
+					echo "<td> $numcommande </td>";
+					echo "<td> $datecommande </cairo_matrix_transform_distance(matrix, dx, dy)>";
+					if(!(empty($panier))){
+						//Partie panier
+						echo "<td> Oui </td>";
+						echo "<td>";
+						$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM compopanier CP, 	Produit P WHERE numPanier = $panier AND CP.numProduit = P.numProduit");
+						while($row2 = mysqli_fetch_assoc($resultat2)){
+							echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
+							echo "<br>"; 
+						}
+						echo "</td>";
+					}
+					else{
+						//Partie ponctuelle
+						echo "<td> Non </td>";
+						echo "<td>";
+						$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM ensembleproduits 	EP, Produit P WHERE numCommande = $numcommande AND EP.numProduit = P.numProduit");
+						while($row2 = mysqli_fetch_assoc($resultat2)){
+							echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
+							echo "<br>"; 
+						}
+						echo "</td>";
+					}
+					$resultat3 = mysqli_query($co,"SELECT dateLivraison,livree FROM Livraison L,commande_livraison 	CL WHERE $numcommande = CL.numCommande AND L.numLivraison = CL.numLivraison");	
+					$row3 = mysqli_fetch_assoc($resultat3);
+					$datelivraison = $row3["dateLivraison"];
+					if(!(empty($datelivraison))){
+						echo "<td>".$row3["dateLivraison"]."</td>";
+						echo "<td> </td>";
+					}
+					else{
+						echo "<td> </td>";
+						echo "<td> <form action=\"../../Controleurs/ajout_livraison.php\" method=\"POST\">
+										<input type=\"date\" =name=\"datelivraison\" min=\"2021-01-01\">	
+											<input type=\"submit\" value=\"Choisir\">
+									</form></td>";
+					}
+					echo "<tr>";
+				}
+			}
+			if($opt==2){
+				//Côté totalité des commandes
+				$resultat=mysqli_query($co, "SELECT numCommande,dateCommande,panierCommande,numClient FROM Commande");
+				while($row=mysqli_fetch_assoc($resultat)){
+					$numclient= $row["numClient"];
+					$numcommande = $row["numCommande"];
+					$datecommande = $row["dateCommande"];
+					$panier = $row['panierCommande'];
+					echo "<tr>";
+					echo "<td> $numclient </td>";
+					echo "<td> $numcommande </td>";
+					echo "<td> $datecommande </td>";	
+
+					if(!(empty($panier))){
+						//Partie panier
+						echo "<td> Oui </td>";
+						echo "<td>";
+						$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM compopanier CP, 	Produit P WHERE numPanier = $panier AND CP.numProduit = P.numProduit");
+						while($row2 = mysqli_fetch_assoc($resultat2)){
+							echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
+							echo "<br>"; 
+						}
+						echo "</td>";
+					}
+					else{
+						//Partie ponctuelle
+						echo "<td> Non </td>";
+						echo "<td>";
+						$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM ensembleproduits 	EP, Produit P WHERE numCommande = $numcommande AND EP.numProduit = P.numProduit");
+						while($row2 = mysqli_fetch_assoc($resultat2)){
+							echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
+							echo "<br>"; 
+						}
+						echo "</td>";
+					}	
+					$resultat3 = mysqli_query($co,"SELECT dateLivraison,livree FROM Livraison L,commande_livraison 	CL WHERE $numcommande = CL.numCommande AND L.numLivraison = CL.numLivraison");	
+					$row3 = mysqli_fetch_assoc($resultat3);
+					echo "<td>".$row3["dateLivraison"]."</td>";
+					echo "<tr>";
+				}
+			}
+		}
+		else
+		{
+			echo "<td colspan=\"2\">Modification</td> </tr>";
+			//Côté client !
+			$numclient=$_SESSION["num_client"];
+			$resultat=mysqli_query($co, "SELECT numCommande,dateCommande,panierCommande FROM Commande WHERE numClient = $numclient");
+			while($row=mysqli_fetch_assoc($resultat)){
+				$numcommande = $row["numCommande"];
+				$datecommande = $row["dateCommande"];
+				$panier = $row['panierCommande'];
+				echo "<tr>";
+				echo "<td> $numclient </td>";
+				echo "<td> $numcommande </td>";
+				echo "<td> $datecommande </td>";	
+				if(!(empty($panier))){
+					//Partie panier
+					echo "<td> Oui </td>";
+					echo "<td> Oui </td>";
+					echo "<td>";
+					$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM compopanier CP, Produit P WHERE numPanier = $panier AND CP.numProduit = P.numProduit");
+					while($row2 = mysqli_fetch_assoc($resultat2)){
+						echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
+						echo "<br>"; 
+					}
+					echo "</td>";
+				}
+				else{
+					//Partie ponctuelle
+					echo "<td> Non </td>";
+					echo "<td>";
+					$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM ensembleproduits EP, Produit P WHERE numCommande = $numcommande AND EP.numProduit = P.numProduit");
+					while($row2 = mysqli_fetch_assoc($resultat2)){
+						echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
+						echo "<br>"; 
+					}
+					echo "</td>";
+				}
+				$resultat3 = mysqli_query($co,"SELECT dateLivraison,livree FROM Livraison L,commande_livraison CL WHERE $numcommande = CL.numCommande AND L.numLivraison = CL.numLivraison");	
+				$row3 = mysqli_fetch_assoc($resultat3);
+				echo "<td>".$row3["dateLivraison"]."</td>";
+				//Faire gaffe a cette partie encore des modifs possibles à faire
+				if($row3["livree"]==0){
+					//Modification encore possible
+					echo "<td>";
+					echo "<a href=page_modif_commande.php?numcom=$numcommande>Modifier</a>";
+					echo "</td>";
+				}
+				else{
+					//Modification impossible
+					echo "<td>Modification impossible </td>";
+				}
+				echo "<tr>";
+			}
+		}
+
+
+	?>
+	</table>
 </body>
 
 </html>
