@@ -18,7 +18,8 @@ session_start();
 
 <body>
 	<nav>
-		<div class="element_nav"><img src="Images/logo_nav.png" width="75px"></div>		
+		<div class="element_nav"><img src="Images/logo_nav.png" width="75px"></div>
+		<div class="element_nav"><a href="page_accueil.php">Accueil</a></div>		
 		<div class="element_nav"><a href="page_produits.php">Produits</a></div>
 		<div class="element_nav"><a href="page_faire_commande.php">Faire une commande</a></div>
 		<div class="element_nav compte">
@@ -108,7 +109,15 @@ session_start();
 			{
 				echo "<div class=\"ligne_produits\">\n";
 			}
-			echo "<div class=\"produit\">\n";
+			echo "<div class=\"produit";
+			if($ligne["quantiteStock"]==0)
+			{
+				echo " rupture\">\n";
+			}
+			else
+			{
+				echo "\">\n";
+			}
 			if($ligne["nomImage"])
 			{
 				echo "<img src=\"Images/".$ligne["nomImage"]."\" alt=\"Image produit\">\n";
@@ -144,6 +153,18 @@ session_start();
 			<input type="submit" value="Confirmer la commande">
 		</form>
 	</div>
+
+	<?php
+	if($_SESSION["num_client"])
+	{
+		echo "<footer>
+		<form action=\"../../Controleurs/deconnexion.php\" method=\"POST\">
+		<input type=\"submit\" value=\"Déconnexion\">
+		</form>
+		</footer>";
+	}
+	
+	?>
 </body>
 
 </html>
