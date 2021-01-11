@@ -44,7 +44,7 @@ session_start();
 	</nav>
 	
 	<ul>
-		<li><a href="">Gérer les stocks</li>
+		<li><a href="page_ajout_produits.php">Ajouter un produit</li>
 		<li><a href="page_commande.php?optadm=1">Consulter les commandes à venir</a></li>
 		<li><a href="page_commande.php?optadm=2 ">Consulter la totalité des commandes</a></li>
 		<li><a href="page_livraison.php">Consulter la liste des livraisons à venir</a></li>
