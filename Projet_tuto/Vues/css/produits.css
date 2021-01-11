@@ -21,9 +21,30 @@
 	height: 100px;	
 }
 
-
-.bouton_panier
+.bouton_confirmation
 {
-	margin-bottom:45px;
+	text-align: center;
+}
+
+.recapitulatif
+{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 45px;
+}
+
+table, th, td
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+table
+{
+	font-size: 20px;
+}
+
+th, td
+{
 	text-align: center;
 }
