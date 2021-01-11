@@ -112,7 +112,7 @@ session_start();
 											<input type=\"submit\" value=\"Choisir\">
 									</form></td>";
 					}
-					echo "<tr>";
+					echo "</tr>";
 				}
 			}
 			if($opt==2){
@@ -123,7 +123,7 @@ session_start();
 					$numcommande = $row["numCommande"];
 					$datecommande = $row["dateCommande"];
 					$panier = $row['panierCommande'];
-					echo "<tr>";
+					echo "</tr>";
 					echo "<td> $numclient </td>";
 					echo "<td> $numcommande </td>";
 					echo "<td> $datecommande </td>";	
@@ -153,7 +153,7 @@ session_start();
 					$resultat3 = mysqli_query($co,"SELECT dateLivraison,livree FROM Livraison L,commande_livraison 	CL WHERE $numcommande = CL.numCommande AND L.numLivraison = CL.numLivraison");	
 					$row3 = mysqli_fetch_assoc($resultat3);
 					echo "<td>".$row3["dateLivraison"]."</td>";
-					echo "<tr>";
+					echo "</tr>";
 				}
 			}
 		}
@@ -198,17 +198,21 @@ session_start();
 				$row3 = mysqli_fetch_assoc($resultat3);
 				echo "<td>".$row3["dateLivraison"]."</td>";
 				//Faire gaffe a cette partie encore des modifs possibles à faire
-				if($row3["livree"]==0){
+				$resultat4 = mysqli_query($co,"SELECT numCommande,numLivraison FROM commande_livraison WHERE $numcommande = numCommande");
+				if(mysqli_num_rows($resultat4)==0){
 					//Modification encore possible
 					echo "<td>";
-					echo "<a href=page_modif_commande.php?numcom=$numcommande>Modifier</a>";
+					echo "<a href=../../Controleurs/modif_commande.php?numcom=$numcommande>Modifier</a>";
+					echo "</td>";
+					echo "<td>";
+					echo "<a href=../../Controleurs/supprimer_commande.php?numcom=$numcommande>Supprimer</a>";
 					echo "</td>";
 				}
 				else{
 					//Modification impossible
-					echo "<td>Modification impossible </td>";
+					echo "<td colspan=\"2\">Modification impossible </td>";
 				}
-				echo "<tr>";
+				echo "</tr>";
 			}
 		}
 
@@ -218,3 +222,4 @@ session_start();
 </body>
 
 </html>
+
