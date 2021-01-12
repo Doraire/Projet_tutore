@@ -74,7 +74,7 @@ session_start();
 				<input type="text" name="type" required="true">
 			</p>
 			<p>
-				<label for="image">Nom du fichier image du produit :</label>
+				<label for="image">Nom du fichier image du produit (à mettre dans le dossier Vues/html/Images) :</label>
 				<input type="file" name="image" accept="image/*">
 			</p>
 			<p>
