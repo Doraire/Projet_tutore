@@ -19,8 +19,9 @@ session_start();
 <body>
 	<nav>
 		<div class="element_nav"><img src="Images/logo_nav.png" width="75px"></div>
-		<div class="element_nav"><a href="page_index.php">Accueil</a></div>
+		<div class="element_nav"><a href="page_accueil.php">Accueil</a></div>		
 		<div class="element_nav"><a href="page_produits.php">Produits</a></div>
+		<div class="element_nav"><a href="page_faire_commande.php">Faire une commande</a></div>
 		<div class="element_nav compte">
 			<?php
 			if(isset($_SESSION["login"]))
@@ -46,11 +47,11 @@ session_start();
 		<form action="../../Controleurs/connexion.php" method="POST">
 			<p>
 				<label for="login">Login :</label>
-				<input type="text" name="login" placeholder="Entrez votre login" maxlength="20" size="25">
+				<input type="text" name="login" placeholder="Entrez votre login" maxlength="20" size="25" required="true">
 			</p>
 			<p>
 				<label for="mdp">Mot de passe :</label>
-				<input type="password" name="mdp" placeholder="Entrez votre mot de passe" maxlength="20" size="25">
+				<input type="password" name="mdp" placeholder="Entrez votre mot de passe" maxlength="20" size="25" required="true">
 			</p>
 			<input type="submit" value="Se connecter">
 			<a href="page_inscription.php">Vous n'avez pas de compte ?</a>

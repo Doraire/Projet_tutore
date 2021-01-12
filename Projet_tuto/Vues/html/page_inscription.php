@@ -19,8 +19,9 @@ session_start();
 <body>
 	<nav>
 		<div class="element_nav"><img src="Images/logo_nav.png" width="75px"></div>
-		<div class="element_nav"><a href="page_index.php">Accueil</a></div>
+		<div class="element_nav"><a href="page_accueil.php">Accueil</a></div>		
 		<div class="element_nav"><a href="page_produits.php">Produits</a></div>
+		<div class="element_nav"><a href="page_faire_commande.php">Faire une commande</a></div>
 		<div class="element_nav compte">
 			<?php
 			if(isset($_SESSION["login"]))
@@ -42,44 +43,38 @@ session_start();
 			?>
 		</div>
 	</nav>
-
 	<div class="formulaire">
 		<form action="../../Controleurs/inscription.php" method="POST">
 			<p>
 				<label for="nom">Nom :</label>
-				<input type="text" name="nom" placeholder="Entrez votre nom" maxlength="20" size="25">
+				<input type="text" name="nom" placeholder="Entrez votre nom" maxlength="20" size="25" required="true">
 			</p>
 			<p>
 				<label for="prenom">Prénom :</label>
-				<input type="text" name="prenom" placeholder="Entrez votre prénom" maxlength="20" size="25">
+				<input type="text" name="prenom" placeholder="Entrez votre prénom" maxlength="20" size="25" required="true">
 			</p>
 			<p>
 				<label for="mail">Mail :</label>
-				<input type="email" name="mail" placeholder="Entrez votre e-m@il" maxlength="20" size="25">
+				<input type="email" name="mail" placeholder="Entrez votre e-m@il" maxlength="20" size="25" required="true">
 			</p>
 			<p>
 				<label for="adresse">Adresse :</label>
-				<input type="text" name="adresse" placeholder="Entrez votre adresse" maxlength="20" size="25">
+				<input type="text" name="adresse" placeholder="Entrez votre adresse" maxlength="20" size="25" required="true">
 			</p>
 			<p>
 				<label for="quartier">Quartier :</label>
-				<input type="text" name="quartier" placeholder="Entrez votre quartier" maxlength="20" size="25">
+				<input type="text" name="quartier" placeholder="Entrez votre quartier" maxlength="50" size="25">
 			</p>
 			<p>
 				<label for="login">Login :</label>
-				<input type="text" name="login" placeholder="Entrez votre login" maxlength="20" size="25">
+				<input type="text" name="login" placeholder="Entrez votre login" maxlength="20" size="25" required="true">
 			</p>
 			<p>
 				<label for="mdp">Mot de passe :</label>
-				<input type="password" name="mdp" placeholder="Entrez votre mot de passe" maxlength="20" size="25">
+				<input type="password" name="mdp" placeholder="Entrez votre mot de passe" maxlength="20" size="25" required="true">
 			</p>
 			<input type="submit" value="S'inscrire">
 			<a href="page_connexion.php">Vous avez déjà un compte ?</a>
-			<?php
-				if($_GET["login"]=='nega'){
-					echo "Votre login est déjà pris";
-				}
-			?>
 		</form>
 	</div>
 
