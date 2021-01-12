@@ -16,12 +16,7 @@
 		
 			for ($i=0 ;$i < count($_SESSION['panier']['nomProduit']); $i++){
 				if($cle == $_SESSION['panier']['nomProduit'][$i]){
-					if($_SESSION['panier']['qteProduit'][$i]>0){
-						$_SESSION['panier']['qteProduit'][$i] = $value;
-					}
-					else{
-						$_SESSION['panier']['qteProduit'][$i] = 0;
-					}
+					$_SESSION['panier']['qteProduit'][$i] = $value;
 					$flag = 1;
 				}
 			}
