@@ -47,6 +47,7 @@ session_start();
 	<div class="options">
 		<ul>
 			<li><a href="page_ajout_produits.php">Ajouter un produit</a></li>
+			<li><a href="page_stocks.php">Gérer les stocks</a></li>
 			<li><a href="page_commande.php?optadm=1">Consulter les commandes à venir</a></li>
 			<li><a href="page_commande.php?optadm=2 ">Consulter la totalité des commandes</a></li>
 			<li><a href="page_livraison.php?optadm=1">Consulter la liste des livraisons à venir</a></li>
