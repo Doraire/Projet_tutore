@@ -64,6 +64,64 @@ session_start();
 				//Côté commande à venir
 			echo "<td colspan=\"2\">Determiner la date de livraison</td>
     	</tr>";
+    			$datenow=date('Y-m-d');
+    			$resultat=mysqli_query($co, "SELECT numCommande,dateCommande,panierCommande,numClient FROM Commande");
+    			while($row=mysqli_fetch_assoc($resultat)){
+    				$datecommande = $row["dateCommande"];
+    				$diff=strtotime($datenow) - strtotime($datecommande);
+    				if(($diff/86400)<=7){
+						$numclient= $row["numClient"];
+						$numcommande = $row["numCommande"];
+						$panier = $row['panierCommande'];
+						echo "<tr>";
+						echo "<td> $numclient </td>";
+						echo "<td> $numcommande </td>";
+						echo "<td> $datecommande </cairo_matrix_transform_distance(matrix, dx, dy)>";
+						if(!(empty($panier))){
+							//Partie panier
+							echo "<td> Oui </td>";
+							echo "<td>";
+							$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM compopanier CP, 	Produit P WHERE numPanier = $panier AND CP.numProduit = P.numProduit");
+							while($row2 = mysqli_fetch_assoc($resultat2)){
+								echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
+								echo "<br>"; 
+							}
+							echo "</td>";
+						}
+						else{
+							//Partie ponctuelle
+							echo "<td> Non </td>";
+							echo "<td>";
+							$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM ensembleproduits 	EP, Produit P WHERE numCommande = $numcommande AND EP.numProduit = P.numProduit");
+							while($row2 = mysqli_fetch_assoc($resultat2)){
+								echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
+								echo "<br>"; 
+							}
+							echo "</td>";
+						}
+						$resultat3 = mysqli_query($co,"SELECT dateLivraison,livree FROM Livraison L,commande_livraison 	CL WHERE $numcommande = CL.numCommande AND L.numLivraison = CL.numLivraison");	
+						$row3 = mysqli_fetch_assoc($resultat3);
+						$datelivraison = $row3["dateLivraison"];
+						if(!(empty($datelivraison))){
+							echo "<td>".$row3["dateLivraison"]."</td>";
+							echo "<td> </td>";
+						}
+						else{
+							echo "<td> </td>";
+							echo "<td> <form action=\"../../Controleurs/ajout_livraison.php\" method=\"POST\">
+										<input type=\"date\" name=\"datelivraison\" min=\"2021-01-01\">
+										<input type=\"text\" name=\"numcommande\" value=\"$numcommande\" style=\"display:none\">
+											<input type=\"submit\" value=\"Choisir\">
+									</form></td>";
+						}
+						echo "</tr>";
+					}
+				}
+			}
+			if($opt==2){
+				//Côté totalité des commandes
+				echo "<td colspan=\"2\">Determiner la date de livraison</td>
+    	</tr>";
 
     			$resultat=mysqli_query($co, "SELECT numCommande,dateCommande,panierCommande,numClient FROM Commande");
     			while($row=mysqli_fetch_assoc($resultat)){
@@ -112,47 +170,6 @@ session_start();
 											<input type=\"submit\" value=\"Choisir\">
 									</form></td>";
 					}
-					echo "</tr>";
-				}
-			}
-			if($opt==2){
-				//Côté totalité des commandes
-				$resultat=mysqli_query($co, "SELECT numCommande,dateCommande,panierCommande,numClient FROM Commande");
-				while($row=mysqli_fetch_assoc($resultat)){
-					$numclient= $row["numClient"];
-					$numcommande = $row["numCommande"];
-					$datecommande = $row["dateCommande"];
-					$panier = $row['panierCommande'];
-					echo "</tr>";
-					echo "<td> $numclient </td>";
-					echo "<td> $numcommande </td>";
-					echo "<td> $datecommande </td>";	
-
-					if(!(empty($panier))){
-						//Partie panier
-						echo "<td> Oui </td>";
-						echo "<td>";
-						$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM compopanier CP, 	Produit P WHERE numPanier = $panier AND CP.numProduit = P.numProduit");
-						while($row2 = mysqli_fetch_assoc($resultat2)){
-							echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
-							echo "<br>"; 
-						}
-						echo "</td>";
-					}
-					else{
-						//Partie ponctuelle
-						echo "<td> Non </td>";
-						echo "<td>";
-						$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM ensembleproduits 	EP, Produit P WHERE numCommande = $numcommande AND EP.numProduit = P.numProduit");
-						while($row2 = mysqli_fetch_assoc($resultat2)){
-							echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
-							echo "<br>"; 
-						}
-						echo "</td>";
-					}	
-					$resultat3 = mysqli_query($co,"SELECT dateLivraison,livree FROM Livraison L,commande_livraison 	CL WHERE $numcommande = CL.numCommande AND L.numLivraison = CL.numLivraison");	
-					$row3 = mysqli_fetch_assoc($resultat3);
-					echo "<td>".$row3["dateLivraison"]."</td>";
 					echo "</tr>";
 				}
 			}
