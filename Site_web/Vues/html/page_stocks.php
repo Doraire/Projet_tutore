@@ -85,11 +85,11 @@ session_start();
 			<p>".$ligne["prixProduit"]."€/kg</p>\n
 			<p>En stock : ".$ligne["quantiteStock"]."kg</p>\n
 			<form action=\"../../Controleurs/stocks.php\" method=\"POST\">
-			<input class=\"number\" type=\"number\" name=".$ligne["nomProduit"]." min=\"0\" step=\"0.01\">
+			<input class=\"number\" type=\"number\" name=".$ligne["nomProduit"]." min=\"0\" step=\"0.01\" required=\"true\">
 			<input type=\"submit\" value=\"Changer le prix (€/kg)\" name=\"prix\">
 			</form>
 			<form action=\"../../Controleurs/stocks.php\" method=\"POST\">
-			<input class=\"number\" type=\"number\" name=".$ligne["nomProduit"]." min=\"0\" step=\"0.1\">
+			<input class=\"number\" type=\"number\" name=".$ligne["nomProduit"]." min=\"0\" step=\"0.1\" required=\"true\">
 			<input type=\"submit\" value=\"Changer la quantité (kg)\" name=\"quantite\">
 			</form>
 			</div>\n";
