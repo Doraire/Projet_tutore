@@ -92,6 +92,7 @@ session_start();
 	</div>
 	<div class="liste_produits">
 		<?php
+		$numcommande = $_GET["numcom"];
 		$valeur = 0;
 		$reponse = mysqli_query($co, "SELECT nomFamille, typeProduit, nomProduit, prixProduit, quantiteStock, nomImage
 			FROM Produit P INNER JOIN Famille F ON (P.numFamille=F.numFamille)
@@ -135,6 +136,7 @@ session_start();
 			<p>".$ligne["quantiteStock"]."kg</p>\n
 			<form action=\"../../Controleurs/ajout_au_panier.php\" method=\"POST\">
 			<input class=\"number\" type=\"number\" name=".$ligne["nomProduit"]." value=".$valeur." min=\"0\" max=\"50\" step=\"0.1\">
+			<input type=\"text\" name=\"numcommande\" value=\"$numcommande\" style=\"display:none\">
 			<input type=\"submit\" value=\"Commander\">
 			</form>
 			</div>\n";
@@ -149,8 +151,10 @@ session_start();
 	</div>
 
 	<div class="bouton_confirmation">
-		<form  action="../../Controleurs/ajout_commande.php" method="POST">	
-			<input type="submit" value="Confirmer la commande">
+		<?php
+		echo "<form  action=\"../../Controleurs/ajout_commande.php?numcom=$numcommande\" method=\"POST\">	
+			<input type=\"submit\" value=\"Confirmer la commande\">";
+			?>
 		</form>
 	</div>
 
