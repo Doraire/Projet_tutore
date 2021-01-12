@@ -191,7 +191,6 @@ session_start();
 						if(!(empty($panier))){
 					//Partie panier
 							echo "<td> Oui </td>";
-							echo "<td> Oui </td>";
 							echo "<td>";
 							$resultat2 = mysqli_query($co,"SELECT nomProduit,quantiteProduit FROM compopanier CP, Produit P WHERE numPanier = $panier AND CP.numProduit = P.numProduit");
 							while($row2 = mysqli_fetch_assoc($resultat2)){
