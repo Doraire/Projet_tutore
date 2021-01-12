@@ -8,6 +8,8 @@
 .produit
 {
 	text-align: center;
+	border:3px solid #860322;
+	padding : 15px;
 }
 
 .number
