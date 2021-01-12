@@ -1,0 +1,45 @@
+.ligne_produits
+{
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 30px;
+}
+
+.produit
+{
+	text-align: center;
+	border:3px solid #860322;
+	padding : 15px;
+}
+
+.number
+{
+	width: 50px;
+}
+
+.produit img
+{
+	width: 150px;
+	height: 100px;	
+}
+
+
+
+.rupture img
+{
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);	
+}
+
+.rupture
+{
+	color:grey;
+}
+
+form
+{
+	margin-bottom: 15px;
+}
