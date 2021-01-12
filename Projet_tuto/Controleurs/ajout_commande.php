@@ -51,8 +51,9 @@
 			}
 		}
 	}
-	unset($_SESSION['panier']['nomProduit']);
-	unset($_SESSION['panier']['qteProduit']);
+	$_SESSION['panier']=array();
+    	$_SESSION['panier']['nomProduit'] = array();
+    	$_SESSION['panier']['qteProduit'] = array();
 
 	header("Location: ../Vues/html/page_index.php");
 ?>
