@@ -215,7 +215,7 @@ session_start();
 						echo "<td>".$row3["dateLivraison"]."</td>";
 				//Faire gaffe a cette partie encore des modifs possibles à faire
 						$resultat4 = mysqli_query($co,"SELECT numCommande,numLivraison FROM commande_livraison WHERE $numcommande = numCommande");
-						if(mysqli_num_rows($resultat4)==0){
+						if(mysqli_num_rows($resultat4)==0 && empty($panier)){
 					//Modification encore possible
 							echo "<td>";
 							echo "<a href=../../Controleurs/modif_commande.php?numcom=$numcommande>Modifier</a>";
