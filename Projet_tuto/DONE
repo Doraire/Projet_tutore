@@ -24,5 +24,4 @@ Création de commande fait :
 -modif_commande.php
 -supprimer_commande.php
 
-deux problèmes trouvé au niveau de la page_produit : si on a mis un produit dans le panier,puis on met la quantité de celui ci à 0, on ne peux plus lui mettre une valeur(ca bug)
-En plus il semblerai que on ne peux pas faire de nouveau une commande après en avoir modifié une(ca bug)
+*
