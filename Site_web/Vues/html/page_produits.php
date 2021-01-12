@@ -135,7 +135,7 @@ session_start();
 			<p>En stock : ".$ligne["quantiteStock"]."kg</p>\n
 			<form action=\"../../Controleurs/ajout_au_panier.php\" method=\"POST\">
 			<input class=\"number\" type=\"number\" name=".$ligne["nomProduit"]." value=".$valeur." min=\"0\" max=\"50\" step=\"0.1\">
-			<input type=\"submit\" value=\"Commander\">
+			<input type=\"submit\" value=\"Ajouter\">
 			</form>
 			</div>\n";
 			$compteur_ligne=$compteur_ligne+1;
