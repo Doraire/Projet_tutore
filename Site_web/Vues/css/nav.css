@@ -37,3 +37,31 @@ nav
 	border-right: solid black;
 	padding-right: 50px;
 }
+
+@media screen and (max-width: 750px) {
+  nav
+  {
+	display: inline;
+	justify-content: center;
+	height: 300px;
+	right: 1px;
+	left:1px;
+	top:0;
+/*	border-top-left-radius: 7%;
+	border-top-right-radius: 7%;*/
+	border-bottom-left-radius: 25%;
+	border-bottom-right-radius: 25%;
+  }
+  body
+  {
+  	margin-top: 350px;
+  }
+
+  .compte
+{
+	border-left: solid black;
+	padding-left: 5px;
+	border-right: solid black;
+	padding-right: 5px;
+}
+} 
