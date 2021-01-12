@@ -1,0 +1,14 @@
+article
+{
+	margin-left: 10%;
+	margin-bottom: 10%;
+	margin-right: 10%;
+	font-size: 18px;
+	text-align: center;
+}
+
+footer
+{
+	display: flex;
+	justify-content: center;
+}

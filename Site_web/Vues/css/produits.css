@@ -1,0 +1,64 @@
+.ligne_produits
+{
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom: 30px;
+}
+
+.produit
+{
+	text-align: center;
+}
+
+.number
+{
+	width: 50px;
+}
+
+.produit img
+{
+	width: 150px;
+	height: 100px;	
+}
+
+.bouton_confirmation
+{
+	text-align: center;
+}
+
+.recapitulatif
+{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 45px;
+}
+
+table, th, td
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+table
+{
+	font-size: 20px;
+}
+
+th, td
+{
+	text-align: center;
+}
+
+.rupture img
+{
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);	
+}
+
+.rupture
+{
+	color:grey;
+}

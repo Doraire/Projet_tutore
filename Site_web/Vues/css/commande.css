@@ -1,0 +1,20 @@
+table, td, th 
+{
+	border: 2px solid black;
+	width: 50%;
+	border-collapse: collapse;
+	font-size: 18px;
+}
+
+
+.titre_tableau
+{
+	text-align: center;
+}
+
+.tableau
+{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 75px;
+}

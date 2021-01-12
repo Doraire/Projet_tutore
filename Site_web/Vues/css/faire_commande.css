@@ -1,0 +1,11 @@
+.faire_commande
+{
+	font-size:25px;
+	display: flex;
+	justify-content: center;
+}
+
+input
+{
+	margin-bottom: 15px;
+}

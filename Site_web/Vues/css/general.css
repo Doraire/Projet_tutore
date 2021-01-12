@@ -1,0 +1,28 @@
+body
+{
+	background-color: #fefee2;
+	font-family: "Roboto";
+	color:black;
+	margin-top: 200px; 
+	font-size: 17px;
+}
+
+a
+{
+	color:black;
+	text-decoration: none;
+}
+
+
+footer 
+{
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+h1, h2
+{
+	color: #860322;
+	text-align: center;
+}

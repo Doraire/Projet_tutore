@@ -1,0 +1,15 @@
+.formulaire_ajout
+{
+	display: flex;
+	justify-content: center;
+}
+
+h2, h3
+{
+	text-align: center;
+}
+
+form p
+{
+	margin-bottom: 30px;
+}

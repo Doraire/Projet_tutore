@@ -1,0 +1,39 @@
+nav
+{
+	background-color: #8ccb57;
+	position: fixed;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 150px;
+	right: 1px;
+	left:1px;
+	top:0;
+/*	border-top-left-radius: 7%;
+	border-top-right-radius: 7%;*/
+	border-bottom-left-radius: 25%;
+	border-bottom-right-radius: 25%;
+}
+
+.element_nav
+{
+	margin-right: 15px;
+	font-size: 25px;
+	width: 300px;
+	text-align: center;
+}
+
+.element_nav:hover
+{
+	font-weight: bold;
+	font-size: 30px;
+	transition: 0.2s;
+}
+
+.compte
+{
+	border-left: solid black;
+	padding-left: 50px;
+	border-right: solid black;
+	padding-right: 50px;
+}
