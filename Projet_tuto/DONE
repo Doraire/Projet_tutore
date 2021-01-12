@@ -15,8 +15,14 @@ Création de commande fait :
 -ajout_au_panier.php
 
 11/01:
--page_commande.php reste les boutons modif/suppresion seulement
+-page_commande.php
 -page_option_producteur changer 2 ligne pour pouvoir choisir dans quel mode on veut voir les commandes
 -page_option_client changer 3 ligne , différencier livraison/commande (peut être ne pas faire ca ?) , changer la ligne où on veut modifier ses informations
 -commande.css (à changer, utile pour voir la gueule du tableau)
 -ajout_livraison.php
+
+-modif_commande.php
+-supprimer_commande.php
+
+deux problèmes trouvé au niveau de la page_produit : si on a mis un produit dans le panier,puis on met la quantité de celui ci à 0, on ne peux plus lui mettre une valeur(ca bug)
+En plus il semblerai que on ne peux pas faire de nouveau une commande après en avoir modifié une(ca bug)
