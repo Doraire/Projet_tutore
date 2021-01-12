@@ -46,9 +46,9 @@ session_start();
 	<ul>
 		<li><a href="page_ajout_produits.php">Ajouter un produit</li>
 		<li><a href="page_commande.php?optadm=1">Consulter les commandes à venir</a></li>
-		<li><a href="page_commande.php?optadm=2 ">Consulter la totalité des commandes</a></li>
-		<li><a href="page_livraison.php">Consulter la liste des livraisons à venir</a></li>
-		<li><a href="page_livraison.php">Consulter la totalité des livraisons</a></li>
+		<li><a href="page_commande.php?optadm=2">Consulter la totalité des commandes</a></li>
+		<li><a href="page_livraison.php?optadm=1">Consulter la liste des livraisons à venir</a></li>
+		<li><a href="page_livraison.php?optadm=2">Consulter la totalité des livraisons</a></li>
 		<li><a href="../../Controleurs/deconnexion.php">Se déconnecter</li>
 	</ul>
 
