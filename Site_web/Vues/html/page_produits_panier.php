@@ -7,7 +7,7 @@ session_start();
 <html>
 
 <head>
-	<title>Liste des produits</title>
+	<title>Faire le panier</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="../css/general.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
@@ -43,7 +43,7 @@ session_start();
 			?>
 		</div>
 	</nav>
-	<h2>Votre panier</h2>
+	<h2>Le panier</h2>
 	<div class="recapitulatif">
 		<table>
 			
@@ -158,7 +158,7 @@ session_start();
 	<div class="bouton_confirmation">
 		<?php
 		echo "<form  action=\"../../Controleurs/ajout_panier.php?numcom=$numcommande\" method=\"POST\">	
-			<input type=\"submit\" value=\"Confirmer la commande\">";
+			<input type=\"submit\" value=\"Confirmer le panier\">";
 			?>
 		</form>
 	</div>
