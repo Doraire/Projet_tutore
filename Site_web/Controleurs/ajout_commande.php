@@ -42,11 +42,11 @@
 				mysqli_query($co,"INSERT INTO ensembleproduits VALUES($numcommande,$numproduit,".$_SESSION['panier']['qteProduit'][$i].")");
 			}
 			elseif($flag==1){
-				mysqli_query($co,"UPDATE ensembleproduits SET quantiteProduit = ".$_SESSION['panier']['qteProduit'][$i]." WHERE numProduit=$numproduit");
+				mysqli_query($co,"UPDATE ensembleproduits SET quantiteProduit = ".$_SESSION['panier']['qteProduit'][$i]." WHERE numProduit=$numproduit AND $numcommande=numCommande");
 				
 			}
 			else{
-				mysqli_query($co,"DELETE FROM ensembleproduits WHERE numProduit=$numproduit");
+				mysqli_query($co,"DELETE FROM ensembleproduits WHERE numProduit=$numproduit AND $numcommande=numCommande");
 				
 			}
 		}
