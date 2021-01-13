@@ -86,6 +86,7 @@ session_start();
 										echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
 										echo "<br>"; 
 									}
+									echo "<a href=page_produits_panier.php?numcom=$numcommande>Faire le panier</a>";
 									echo "</td>";
 								}
 								else{
@@ -142,6 +143,7 @@ session_start();
 									echo $row2["nomProduit"]." : ".$row2["quantiteProduit"]."kg";
 									echo "<br>"; 
 								}
+								echo "<a href=page_produits_panier.php?numcom=$numcommande>Faire le panier</a>";
 								echo "</td>";
 							}
 							else{
